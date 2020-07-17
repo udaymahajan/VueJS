@@ -16,7 +16,8 @@
                 </b-list-group>
                     
                     <b-button variant="success" @click="submitAnswer" :disabled="selectedIndex === null || answered">Submit</b-button>
-                    <b-button @click="next" variant="primary" :disabled="selectedIndex === null">Next Question</b-button>
+                    <b-button variant="primary" @click="next" :disabled="!answered || index>8">Next Question</b-button>
+                    
         </b-jumbotron>
     </div>
 </template>
@@ -26,13 +27,13 @@ import _ from 'lodash'
 export default {
     props: {
         currentQuestion: Object,
+        index: Number,
         next: Function,
-        previous: Function,
         increment: Function
     },
     data: function() {
         return {
-            selectedIndex: null,
+            selectedIndex: null,  
             correctIndex: null,
             shuffledAnswers: [],
             answered: false

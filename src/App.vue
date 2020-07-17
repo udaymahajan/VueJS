@@ -10,6 +10,7 @@
            <QuestionBox
              v-if="questions.length"
              :currentQuestion = "questions[index]"
+             :index = "index"
              :next = "next"
              :increment = "increment"
            />
@@ -40,12 +41,12 @@ export default {
   methods: {
     next() {
       this.index++
+      this.numTotal++
     },
     increment(isCorrect) {
       if (isCorrect) {
         this.numCorrect++
       }
-      this.numTotal++
     }
   },
   mounted: function() {
